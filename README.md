@@ -26,6 +26,10 @@ One condition needed some extra consideration. SAT 1 asked participants to respo
 
 For each participant × SAT × Contrast condition, I calculated accuracy, mean reaction time, reaction-time variance and trial count. I then used these summary statistics to estimate drift, boundary and non-decision time with the EZ-diffusion model (Wagenmakers et al., 2007).
 
+Before trusting EZ-diffusion on the real data, I wanted to make sure it was actually recovering what I thought it was. I simulated trials using drift and boundary values I already knew, then checked whether the model could recover them. I also added a known non-decision time to make the test harder, because recovering a value close to zero felt like a pretty weak test on its own.
+
+The model recovered the parameters closely in both cases. More importantly, the process caught two mistakes in my implementation: the simulator and model were using different scaling conventions, and I had defined boundary separation incorrectly. I fixed both, reran the recovery tests, and only moved on to the real dataset once the results held.
+
 ## Results
 
 Contrast gave the clearest evidence of selective influence. Mean drift increased from 0.066 at the lowest contrast to 0.314 at the highest, almost a five-fold increase. Boundary, on the other hand, barely changed across the same conditions (0.083–0.092). Making the stimulus easier to see therefore had a large effect on evidence accumulation without producing the same change in response caution.
