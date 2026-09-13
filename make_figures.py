@@ -47,3 +47,28 @@ axes[1].set_title("Effect of stimulus contrast")
 axes[1].legend()
 
 plt.savefig("figure_combined.png")
+plt.clf()
+
+true_drift = [0.1, 0.1, 0.1, 0.1, 0.2, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3, 0.3, 0.4, 0.4, 0.4, 0.4]
+recovered_drift = [0.091608, 0.101050, 0.103665, 0.115326, 0.194381, 0.204686, 0.203475, 0.196500, 0.299252, 0.293267, 0.290870, 0.280943, 0.395489, 0.397631, 0.372969, 0.371573]
+
+plt.scatter(true_drift, recovered_drift)
+plt.plot([0.1, 0.4], [0.1, 0.4], linestyle="--", color="gray")
+plt.xlabel("True drift")
+plt.ylabel("Recovered drift")
+plt.title("Parameter recovery: drift")
+plt.savefig("recovery_drift.png")
+
+plt.savefig("recovery_drift.png")
+
+plt.clf()
+
+true_boundary = [0.1, 0.15, 0.2, 0.25, 0.1, 0.15, 0.2, 0.25, 0.1, 0.15, 0.2, 0.25, 0.1, 0.15, 0.2, 0.25]
+recovered_boundary = [0.108574, 0.150059, 0.192198, 0.232621, 0.105490, 0.160615, 0.225832, 0.260050, 0.107984, 0.156687, 0.189688, 0.221134, 0.101121, 0.138758, 0.185183, 0.185879]
+
+plt.scatter(true_boundary, recovered_boundary)
+plt.plot([0.1, 0.25], [0.1, 0.25], linestyle="--", color="gray")
+plt.xlabel("True boundary")
+plt.ylabel("Recovered boundary")
+plt.title("Parameter recovery: boundary")
+plt.savefig("recovery_boundary.png")

@@ -52,6 +52,17 @@ There is also an important difference between this analysis and Ratcliff & Kang'
 
 I therefore cannot rule out either explanation for the remaining SAT–drift variation: some contamination may still remain, or decision pressure may have had a genuine effect on evidence accumulation.
 
+I then tested recovery more systematically across different drift and boundary values. Drift recovered well throughout, while boundary recovery was strong at low-to-moderate values but started to break down at the highest drift and boundary combination.
+Rather than just treating this as poor recovery, I checked what was actually happening in that condition. At drift = 0.4 and boundary = 0.25, accuracy was exactly 1.0 — every simulated trial was correct. This is the edge case my `accuracy == 1` correction is designed to handle. The correction allows EZ-diffusion to still produce an estimate, but it cannot replace the information lost when accuracy reaches a ceiling. So the weaker boundary recovery here made sense: it reflected a genuine limitation of estimating parameters from ceiling-level accuracy, rather than a new error in the implementation.
+
+![Scatter plot showing true versus recovered drift values across the parameter recovery grid](recovery_drift.png)
+
+*Recovered drift closely followed the true drift values across the full range tested, with little difference between the values used to simulate the data and those estimated by EZ-diffusion.*
+
+![Scatter plot showing true versus recovered boundary values across the parameter recovery grid](recovery_boundary.png)
+
+*Recovered boundary stayed close to the true boundary values across most of the range tested, but became less accurate at the highest drift and boundary combination, where accuracy reached ceiling.*
+
 EZ-diffusion itself is also a simplified analytical version of the diffusion model. It is useful here because it allows drift, boundary and non-decision time to be estimated directly from accuracy and reaction-time summary statistics, but those estimates should not be treated as equivalent to parameters from a full hierarchical diffusion-model fit.
 
 ## References
